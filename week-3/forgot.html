@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="h1">Forgot Password</div>
+      <p class="muted" style="margin-top:0;">Enter your email to reset your password.</p>
+
+      <form id="forgotForm" novalidate>
+        <div class="field">
+          <label class="label" for="email">Email Address</label>
+          <input class="input" id="email" type="email" placeholder="name@example.com">
+          <div class="muted small">Example valid emails: user@example.com, admin@bookstore.com</div>
+        </div>
+
+        <input id="verifiedEmail" type="hidden" value="">
+
+        <div id="resetSection" style="display:none;">
+          <div class="field">
+            <label class="label" for="newPassword">New Password</label>
+            <input class="input" id="newPassword" type="password" placeholder="Enter new password">
+            <div class="muted small">Min 8 chars with uppercase, lowercase, number, and special character.</div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="confirmNewPassword">Confirm New Password</label>
+            <input class="input" id="confirmNewPassword" type="password" placeholder="Re-enter new password">
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Submit</button>
+        <div id="forgotMessage" class="msg" style="display:none;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    window.initForgotForm();
+  </script>
+</body>
+</html>

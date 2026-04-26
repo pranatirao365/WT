@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Content</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function getQueryParam(name) {
+      var search = window.location.search || "";
+      if (search.indexOf("?") === 0) search = search.substring(1);
+      var parts = search.split("&");
+      for (var i = 0; i < parts.length; i++) {
+        var kv = parts[i].split("=");
+        if (decodeURIComponent(kv[0] || "") === name) {
+          return decodeURIComponent(kv[1] || "");
+        }
+      }
+      return "";
+    }
+
+    window.onload = function () {
+      var bookId = getQueryParam("book");
+      if (bookId) {
+        window.renderBookById(bookId);
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div id="contentRoot">
+      <div class="panel">
+        <div class="h1">Welcome</div>
+        <p class="muted" style="margin-top:0;">
+          Welcome to the Online Book Store demo.
+          Create an account or login to access the Book Collection and view book details.
+        </p>
+
+        <div class="h2">How to Use</div>
+        <ul style="margin:0; padding-left: 18px;">
+          <li>Register (new user) or Login (existing user)</li>
+          <li>Forgot Password lets you reset your password after verifying email</li>
+          <li>After login, open Book Collection to search/filter and view details</li>
+        </ul>
+
+        <div class="h2">Where Data is Stored</div>
+        <ul style="margin:0; padding-left: 18px;">
+          <li><b>Registered users:</b> saved in browser localStorage as <code>wt_week3_users</code></li>
+          <li><b>Current login session:</b> saved as <code>wt_week3_current_user</code></li>
+        </ul>
+
+        <div class="h2">Note</div>
+        <div class="muted">
+          This is a front-end demo (no server/database). Data stays in the same browser only.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

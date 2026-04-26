@@ -1,0 +1,17 @@
+<html>
+<head>
+<style>
+body { font-family: Arial; text-align:center; }
+a { margin-top:20px; display:block; }
+</style>
+</head>
+
+<body>
+
+<h2>Order Placed Successfully!</h2>
+<p>Thank you, ${name}</p>
+
+<a href="products.jsp">Continue Shopping</a>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>User Registration</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="h1">User Registration</div>
+      <p class="muted" style="margin-top:0;">Create an account to sign up on the online bookstore.</p>
+
+      <form id="registrationForm" novalidate>
+        <div class="field">
+          <label class="label" for="username">Username</label>
+          <input class="input" id="username" type="text" placeholder="Enter username">
+          <div class="muted small">At least 5 characters.</div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" type="email" placeholder="name@example.com">
+          <div class="muted small">Must be a valid email format.</div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="phone">Phone</label>
+          <input class="input" id="phone" type="tel" placeholder="10-digit phone number">
+          <div class="muted small">Exactly 10 digits.</div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <input class="input" id="password" type="password" placeholder="Enter password">
+          <div class="muted small">Min 8 chars with uppercase, lowercase, number, and special character.</div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="confirmPassword">Confirm Password</label>
+          <input class="input" id="confirmPassword" type="password" placeholder="Re-enter password">
+        </div>
+
+        <div class="field">
+          <label style="display:flex; align-items:flex-start; gap:10px;">
+            <input id="terms" type="checkbox" style="margin-top:3px;">
+            <span>I accept terms and conditions</span>
+          </label>
+        </div>
+
+        <button class="btn" type="submit">Register</button>
+        <div id="formMessage" class="msg" style="display:none;"></div>
+      </form>
+
+      <div class="muted small" style="margin-top:12px;">
+        Already have an account? <a href="login.html">Login</a>
+        &nbsp;|&nbsp;
+        <a href="forgot.html">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.initRegistrationForm();
+  </script>
+</body>
+</html>

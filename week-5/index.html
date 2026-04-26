@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 - XML Book Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Online Bookstore - Catalog</h1>
+            <div class="badge badge--ok">XML Powered</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="catalog-section">
+            <div class="section-header">
+                <div class="h2">Book Catalog</div>
+                <div class="muted">Live data loaded dynamically from book_catalog.xml via Fetch API.</div>
+            </div>
+            
+            <!-- Where the XML books will be injected -->
+            <div class="books-grid" id="catalog-container">
+                <div class="loading-state">
+                    Loading catalog from XML...
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

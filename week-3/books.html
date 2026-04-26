@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Book Collection</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="h1">Book Collection</div>
+      <p class="muted" style="margin-top:0;">
+        Search and filter books. Click a book to view details.
+      </p>
+
+      <div id="profileRoot"></div>
+
+      <div class="controls">
+        <div class="field" style="margin:0;">
+          <label class="label" for="searchInput">Search by title</label>
+          <input class="input" id="searchInput" type="text" placeholder="Type to search...">
+        </div>
+
+        <div class="field" style="margin:0;">
+          <label class="label" for="categoryFilter">Category</label>
+          <select class="input" id="categoryFilter"></select>
+        </div>
+      </div>
+
+      <div class="book-layout">
+        <div>
+          <div class="h2" style="margin-top:0;">Books</div>
+          <div id="booksList" class="book-grid"></div>
+        </div>
+        <div>
+          <div class="h2" style="margin-top:0;">Details</div>
+          <div id="detailsRoot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.initBooksPage();
+  </script>
+</body>
+</html>

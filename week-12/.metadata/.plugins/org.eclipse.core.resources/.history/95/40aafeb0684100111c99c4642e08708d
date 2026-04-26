@@ -1,0 +1,76 @@
+const API = "cart";
+
+// Add item
+function addToCart(item) {
+    sendRequest({ action: "add", item: item });
+}
+
+// Update quantity
+function updateQuantity(item, qty) {
+    sendRequest({
+        action: "update",
+        item: item,
+        quantity: parseInt(qty)
+    });
+}
+
+// Remove item
+function removeItem(item) {
+    sendRequest({ action: "remove", item: item });
+}
+
+// Load cart
+function loadCart() {
+    fetch(API)
+        .then(res => res.json())
+        .then(data => updateCartUI(data));
+}
+
+// Common function
+function sendRequest(payload) {
+    fetch(API, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => updateCartUI(data));
+}
+
+// Update UI
+function updateCartUI(cart) {
+    let container = document.getElementById("cart-container");
+    let count = document.getElementById("cartCount");
+
+    container.innerHTML = "";
+    let total = 0;
+
+    if (cart.items.length === 0) {
+        container.innerHTML = "<p>Cart is empty</p>";
+        count.innerText = "Cart Items: 0";
+        return;
+    }
+
+    cart.items.forEach(item => {
+        total += item.quantity;
+
+        container.innerHTML += `
+            <div class="cart-item">
+                <b>${item.name}</b>
+                <br>
+                Qty:
+                <input type="number" value="${item.quantity}"
+                onchange="updateQuantity('${item.name}', this.value)">
+                
+                <button onclick="removeItem('${item.name}')">Remove</button>
+            </div>
+        `;
+    });
+
+    count.innerText = "Cart Items: " + total;
+}
+
+// load on start
+window.onload = loadCart;

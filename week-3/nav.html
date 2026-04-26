@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Navigation</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function openRegistration() {
+      parent.frames["contentFrame"].location = "register.html";
+    }
+
+    function openForgot() {
+      parent.frames["contentFrame"].location = "forgot.html";
+    }
+
+    function openLogin() {
+      parent.frames["contentFrame"].location = "login.html";
+    }
+
+    function openHome() {
+      parent.frames["contentFrame"].location = "content.html";
+    }
+
+    function openBooks() {
+      try {
+        if (typeof getCurrentUserEmail === "function" && !getCurrentUserEmail()) {
+          return openLogin();
+        }
+      } catch (e) {
+        // ignore
+      }
+      parent.frames["contentFrame"].location = "books.html";
+    }
+
+    // WEEK-3(c): dynamic content loading into the content frame
+    function loadBook(bookId) {
+      try {
+        if (typeof getCurrentUserEmail === "function" && !getCurrentUserEmail()) {
+          return openLogin();
+        }
+      } catch (e) {
+        // ignore
+      }
+
+      var frame = parent.frames["contentFrame"];
+      try {
+        if (frame && typeof frame.renderBookById === "function") {
+          var ok = frame.renderBookById(bookId);
+          if (ok) return;
+        }
+      } catch (e) {
+        // ignore and fallback
+      }
+
+      // fallback: open the book collection and show the selected book
+      parent.frames["contentFrame"].location = "books.html?book=" + encodeURIComponent(bookId);
+    }
+
+    function buildBookLinks() {
+      var list = document.getElementById("bookList");
+      if (!list || !window.BOOKS) return;
+
+      list.innerHTML = "";
+
+      for (var i = 0; i < window.BOOKS.length; i++) {
+        var book = window.BOOKS[i];
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = "#";
+        a.textContent = book.title;
+        a.onclick = (function (id) {
+          return function () {
+            loadBook(id);
+            return false;
+          };
+        })(book.id);
+        li.appendChild(a);
+        list.appendChild(li);
+      }
+    }
+
+    function logout() {
+      try {
+        if (typeof clearCurrentUserEmail === "function") {
+          clearCurrentUserEmail();
+        }
+      } catch (e) {
+        // ignore
+      }
+      updateAuthUI();
+      openLogin();
+    }
+
+    function updateAuthUI() {
+      try {
+        if (typeof ensureSeedUsers === "function") ensureSeedUsers();
+      } catch (e) {
+        // ignore
+      }
+
+      var loggedIn = false;
+      var email = "";
+      try {
+        if (typeof getCurrentUserEmail === "function") {
+          email = getCurrentUserEmail();
+          loggedIn = !!email;
+        }
+      } catch (e) {
+        loggedIn = false;
+      }
+
+      var booksNav = document.getElementById("booksNav");
+      if (booksNav) booksNav.style.display = loggedIn ? "block" : "none";
+
+      var logoutItem = document.getElementById("logoutItem");
+      if (logoutItem) logoutItem.style.display = loggedIn ? "block" : "none";
+
+      var authTip = document.getElementById("authTip");
+      if (authTip) {
+        authTip.textContent = loggedIn ? ("Logged in as " + email) : "Please login to view books.";
+      }
+
+      if (loggedIn) buildBookLinks();
+      else {
+        var list = document.getElementById("bookList");
+        if (list) list.innerHTML = "";
+      }
+    }
+
+    window.updateAuthUI = updateAuthUI;
+
+    window.onload = function () {
+      updateAuthUI();
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Online Book Store</div>
+          <div class="muted" style="font-size: 13px;">Week-3 JavaScript</div>
+        </div>
+      </div>
+
+      <div class="nav-section-title">User</div>
+      <ul class="nav-list">
+        <li><a href="#" onclick="openRegistration(); return false;">User Registration</a></li>
+        <li><a href="#" onclick="openLogin(); return false;">Login</a></li>
+        <li><a href="#" onclick="openForgot(); return false;">Forgot Password</a></li>
+        <li id="logoutItem" style="display:none;"><a href="#" onclick="logout(); return false;">Logout</a></li>
+      </ul>
+
+      <div id="booksNav" style="display:none;">
+        <div class="nav-section-title">Books</div>
+        <ul class="nav-list" id="bookList"></ul>
+
+        <div class="nav-section-title">Collection</div>
+        <ul class="nav-list">
+          <li><a href="#" onclick="openBooks(); return false;">Book Collection</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section-title">Home</div>
+      <ul class="nav-list">
+        <li><a href="#" onclick="openHome(); return false;">Welcome</a></li>
+      </ul>
+
+      <div class="nav-section-title">Tip</div>
+      <div id="authTip" class="muted small">Please login to view books.</div>
+    </div>
+  </div>
+</body>
+</html>

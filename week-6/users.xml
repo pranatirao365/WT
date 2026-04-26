@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="users.xsl"?>
+<users>
+    <!-- User 1: New customer, multiple purchases -->
+    <user id="u1001">
+        <username>johndoe88</username>
+        <password>e10adc3949ba59abbe56e057f20f883e</password> <!-- Encrypted (e.g., MD5/SHA-256 hash) -->
+        <email>john.doe@example.com</email>
+        <purchaseHistory>
+            <book>
+                <title>The Web Basics</title>
+                <date>2023-11-15</date>
+            </book>
+            <book>
+                <title>HTML in Practice</title>
+                <date>2024-01-20</date>
+            </book>
+        </purchaseHistory>
+    </user>
+
+    <!-- User 2: Active customer, single purchase -->
+    <user id="u1002">
+        <username>alice_tech</username>
+        <password>5f4dcc3b5aa765d61d8327deb882cf99</password>
+        <email>alice.tech.guru@domain.org</email>
+        <purchaseHistory>
+            <book>
+                <title>CSS Essentials</title>
+                <date>2024-03-05</date>
+            </book>
+        </purchaseHistory>
+    </user>
+
+    <!-- User 3: Newer customer, no purchases yet -->
+    <user id="u1003">
+        <username>bob.smith</username>
+        <password>7215ee9c7d9dc229d2921a40e899ec5f</password>
+        <email>bsmith99@example.net</email>
+        <purchaseHistory>
+            <!-- Empty purchase history -->
+        </purchaseHistory>
+    </user>
+</users>

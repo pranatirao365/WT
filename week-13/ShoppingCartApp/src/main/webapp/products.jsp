@@ -1,0 +1,44 @@
+<html>
+<head>
+<style>
+body { font-family: Arial; background:#f5f7fa; text-align:center; }
+.card {
+    background:white; padding:20px; margin:20px auto;
+    width:300px; border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+button {
+    background:#3498db; color:white;
+    border:none; padding:10px; border-radius:5px;
+}
+button:hover { background:#2980b9; }
+</style>
+</head>
+<body>
+
+<h2>Book Store</h2>
+
+<div class="card">
+Java Book - Rs500
+<form action="add-to-cart" method="post">
+<input type="hidden" name="name" value="Java Book">
+<input type="hidden" name="price" value="500">
+<br><br>
+<button>Add to Cart</button>
+</form>
+</div>
+
+<div class="card">
+Python Book - Rs400
+<form action="add-to-cart" method="post">
+<input type="hidden" name="name" value="Python Book">
+<input type="hidden" name="price" value="400">
+<br><br>
+<button>Add to Cart</button>
+</form>
+</div>
+
+<a href="cart">Go to Cart</a>
+
+</body>
+</html>

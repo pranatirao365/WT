@@ -1,0 +1,22 @@
+INDEX VERSION 1.134+C:\Users\HOME\Desktop\WT\week-11\.metadata\.plugins\org.eclipse.jdt.core
+2714712098.index
+251682326.index
+1279805315.index
+1934303727.index
+1183764254.index
+1865797976.index
+2934238943.index
+753494666.index
+1677818035.index
+3036753945.index
+2866095494.index
+3189157656.index
+1081129238.index
+3756621075.index
+3413076286.index
+3879929545.index
+4134571912.index
+921950088.index
+2138841065.index
+3175421839.index
+1334788835.index

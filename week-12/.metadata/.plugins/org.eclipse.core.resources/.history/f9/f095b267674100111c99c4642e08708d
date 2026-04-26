@@ -1,0 +1,15 @@
+<html>
+<head>
+    <script src="cart.js"></script>
+</head>
+<body>
+
+<h2>Books Store</h2>
+
+<button onclick="addToCart('Java Book')">Add Java Book</button>
+<button onclick="addToCart('Python Book')">Add Python Book</button>
+
+<h3 id="cartCount">Cart Items: 0</h3>
+
+</body>
+</html>

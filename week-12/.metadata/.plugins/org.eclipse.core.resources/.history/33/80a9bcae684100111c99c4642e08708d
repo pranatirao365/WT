@@ -1,0 +1,82 @@
+package com.app;
+
+import java.io.*;
+import java.util.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import org.json.*;
+
+@WebServlet("/cart")
+public class CartServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+
+        HttpSession session = req.getSession();
+        Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
+
+        if (cart == null) cart = new HashMap<>();
+
+        sendResponse(res, cart);
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+
+        BufferedReader reader = req.getReader();
+        StringBuilder sb = new StringBuilder();
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+
+        JSONObject json = new JSONObject(sb.toString());
+        String action = json.getString("action");
+        String item = json.getString("item");
+
+        HttpSession session = req.getSession();
+        Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
+
+        if (cart == null) cart = new HashMap<>();
+
+        switch (action) {
+            case "add":
+                cart.put(item, cart.getOrDefault(item, 0) + 1);
+                break;
+
+            case "update":
+                int qty = json.getInt("quantity");
+                if (qty <= 0) cart.remove(item);
+                else cart.put(item, qty);
+                break;
+
+            case "remove":
+                cart.remove(item);
+                break;
+        }
+
+        session.setAttribute("cart", cart);
+        sendResponse(res, cart);
+    }
+
+    private void sendResponse(HttpServletResponse res, Map<String, Integer> cart)
+            throws IOException {
+
+        JSONArray arr = new JSONArray();
+
+        for (String key : cart.keySet()) {
+            JSONObject obj = new JSONObject();
+            obj.put("name", key);
+            obj.put("quantity", cart.get(key));
+            arr.put(obj);
+        }
+
+        JSONObject result = new JSONObject();
+        result.put("items", arr);
+
+        res.setContentType("application/json");
+        res.getWriter().write(result.toString());
+    }
+}

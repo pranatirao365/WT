@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book id="b1">
+        <title>The Web Basics</title>
+        <author>R. Sharma</author>
+        <genre>Technology</genre>
+        <price currency="₹">399</price>
+        <availability>In Stock</availability>
+        <image>📘</image>
+    </book>
+    <book id="b2">
+        <title>HTML in Practice</title>
+        <author>A. Khan</author>
+        <genre>Technology</genre>
+        <price currency="₹">499</price>
+        <availability>Limited Stock</availability>
+        <image>📙</image>
+    </book>
+    <book id="b3">
+        <title>CSS Essentials</title>
+        <author>M. Patel</author>
+        <genre>Technology</genre>
+        <price currency="₹">459</price>
+        <availability>In Stock</availability>
+        <image>📗</image>
+    </book>
+    <book id="b4">
+        <title>JavaScript for Web</title>
+        <author>S. Verma</author>
+        <genre>Technology</genre>
+        <price currency="₹">549</price>
+        <availability>In Stock</availability>
+        <image>📒</image>
+    </book>
+    <book id="b5">
+        <title>The Science of Everything</title>
+        <author>P. Iyer</author>
+        <genre>Science</genre>
+        <price currency="₹">699</price>
+        <availability>In Stock</availability>
+        <image>📔</image>
+    </book>
+    <book id="b6">
+        <title>Fiction Nights</title>
+        <author>N. Roy</author>
+        <genre>Fiction</genre>
+        <price currency="₹">299</price>
+        <availability>Out of Stock</availability>
+        <image>📕</image>
+    </book>
+</catalog>

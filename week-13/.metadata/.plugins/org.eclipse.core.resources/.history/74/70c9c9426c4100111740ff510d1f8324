@@ -1,0 +1,27 @@
+<html>
+<body>
+
+<h2>📚 Books</h2>
+
+<form action="add-to-cart" method="post">
+    Java Book - ₹500
+    <input type="hidden" name="name" value="Java Book">
+    <input type="hidden" name="price" value="500">
+    <button>Add</button>
+</form>
+
+<br>
+
+<form action="add-to-cart" method="post">
+    Python Book - ₹400
+    <input type="hidden" name="name" value="Python Book">
+    <input type="hidden" name="price" value="400">
+    <button>Add</button>
+</form>
+
+<br><br>
+
+<a href="cart">Go to Cart</a>
+
+</body>
+</html>

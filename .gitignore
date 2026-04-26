@@ -1,0 +1,6 @@
+# Build outputs
+**/target/
+**/build/
+
+# Compiled Java artifacts
+*.class

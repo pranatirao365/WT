@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 - Smart Bookstore Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Online Bookstore</h1>
+            <div class="cart-icon">🛒 <span id="cart-counter">0</span></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Books Section -->
+        <section class="books-section">
+            <div class="h2">Available Books</div>
+            <div class="books-grid" id="books-container">
+                <!-- Books will be dynamically injected here via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <aside class="cart-section">
+            <div class="h2">Your Cart</div>
+            <div class="cart-items" id="cart-container">
+                <!-- Cart items will be dynamically injected here -->
+                <div class="empty-cart-msg">Your cart is empty.</div>
+            </div>
+            
+            <div class="cart-summary">
+                <div class="total-row">
+                    <strong>Total:</strong>
+                    <strong id="cart-total">₹0</strong>
+                </div>
+                <button id="checkout-btn" class="btn" disabled>Proceed to Checkout</button>
+            </div>
+        </aside>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
