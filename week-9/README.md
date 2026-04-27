@@ -11,7 +11,7 @@ STEP 1: Create login.jsp
 
  STEP 2: Create LoginServlet
 
-👉 Right-click src/main/java → New → Servlet
+👉 Right-click src/main/java → New -> Other -> web-→ Servlet
 👉 Name: LoginServlet
 👉 Package: com.demo
  Name: LogoutServlet
